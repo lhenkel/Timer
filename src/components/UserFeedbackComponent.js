@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert } from 'reactstrap';
 //<UserFeedback message='{this.state.message}' sound='{this.state.sound}' />
 class UserFeedback extends Component {
 
@@ -7,15 +8,19 @@ class UserFeedback extends Component {
     }
 
     render() {
-        if (this.props.sound != false) {
+        if (typeof this.props.sound == 'string') {
             return (
-                <div>hi {this.props.message}
-                    <audio ref={React.createRef()} src='../mp3/ascend.mp3' autoPlay />
+                <div >
+                    <audio ref={React.createRef()} src={this.props.sound} autoPlay />
+                    <Alert className="text-center" color="info"> {this.props.message}</Alert>
                 </div>
+
             );
         } else {
             return (
-                <div>hi  no sound {this.props.message}</div>
+                <div >
+                    <Alert className="text-center" color="success"> {this.props.message}</Alert>
+                </div>
             );
         }
 
