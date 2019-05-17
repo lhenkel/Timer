@@ -72,6 +72,7 @@ class CountdownDisplay extends Component {
                         onComplete={this.handleOnComplete}
                         paused={this.state.paused}
                         color="#0062cc"
+                        size={200}
                         alpha={0.9}
                     />
                     <div className='pt-1 mt-1'><UserFeedback message={this.state.message} sound={this.state.sound} /></div>
