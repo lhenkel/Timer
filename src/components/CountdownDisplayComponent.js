@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import Countdown from 'react-countdown-now';
 import ReactCountdownClock from 'react-countdown-clock';
 import UserFeedback from './UserFeedbackComponent';
 
@@ -11,7 +10,7 @@ const sounds = {
 const states = [
     { seconds: 15, sound: sounds.complete, message: 'Switch Sides', paused: false },
     { seconds: 60, sound: sounds.begin, message: 'Begin other side', paused: false },
-    { seconds: 61, sound: sounds.complete, message: 'Interal Break', paused: false },
+    { seconds: 61, sound: sounds.complete, message: 'Interval Break', paused: false },
     { seconds: 60, sound: sounds.begin, message: 'Begin', paused: false },
     { seconds: 15, sound: sounds.complete, message: 'Switch Sides', paused: false },
     { seconds: 60, sound: sounds.begin, message: 'Begin other side', paused: false },

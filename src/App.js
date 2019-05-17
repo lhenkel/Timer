@@ -1,10 +1,11 @@
+//import { NoSleep } from '../node_modules/nosleep';
+
 import React, { Component } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
 import CountdownDisplay from './components/CountdownDisplayComponent';
 import './App.css';
+import ReactNoSleep from 'react-no-sleep';
 
-
-//function App() {
 class App extends Component {
 
   constructor(props) {
@@ -19,6 +20,9 @@ class App extends Component {
     this.setState(state => ({
       state_ix: 'go'
     }));
+    if (typeof noSleep == 'undefined') {
+      console.log('enabled nosleep');
+    }
   }
 
   notifyComplete() {
@@ -30,8 +34,9 @@ class App extends Component {
   }
 
   render() {
-    return (
+    let btn_class = this.state.black ? "blackButton" : "whiteButton";
 
+    return (
       <Container>
         <Row>
           <Col xs="1"></Col>
@@ -40,11 +45,20 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs="1"></Col>
-          <Col xs="10" className='clock_col'><Button color="primary" onClick={this.handleClick}>Start</Button></Col>
+          <Col xs="10" className='clock_col'>
+            <Button color="primary" onClick={this.handleClick}>Start</Button>
+            <ReactNoSleep>
+              {({ isOn, enable, disable }) => (
+                <Button className='ml-2' color={isOn ? 'success' : 'secondary'} onClick={isOn ? disable : enable}>
+                  {isOn ? 'No Sleep' : 'Sleep'}
+                </Button>
+              )}
+            </ReactNoSleep>
+          </Col>
+
           <Col xs="1"></Col>
         </Row>
       </Container>
-
     );
   }
 }
